@@ -1,3 +1,15 @@
+const fist = new Loot('Chad\'s Fist', 'attack', 3);
+const reel = new Loot('16 mm Reel of Legend', 'attack', 1);
+const gossip = new Loot('Gossip and Insults', 'attack', 0);
+
+const strap = new Loot('Jock Strap', 'hp', 1);
+const sweatShirt = new Loot('Ratty Hipster Sweatshirt', 'hp', 0);
+const cheerSuit = new Loot('Cheer Suit', 'hp', 0);
+
+const jock = new Character('Chad Michael Michaelson', 1, 2, 2, fist, strap, 1);
+const avClub = new Character('AV Club', 1, 2, 2 reel, sweatShirt, 3);
+const cheer = new Character('Marsha', 1, 20, 1, gossip, cheerSuit, 5);
+const enemyArray = [jock, avClub, cheer];
 // export class Game {
 //   constructor() {
 //
@@ -6,10 +18,6 @@
 // }
 
 export class Round {
-  let jock = new Character('Chad Michael Michaelson', 1, 2, 2, new Loot('Chad\'s Fist', 'attack', 3), new Loot('Jock Strap', 'hp', 1), 1);
-  let avClub = new Character('AV Club', 1, 2, 2 new Loot('16 mm Reel of Legend', 'attack', 1), new Loot('Ratty Hipster Sweatshirt', 'hp', 0), 3);
-  let cheer = new Character('Marsha', 1, 20, 1, new Loot('Gossip and Insults', 'attack', 0), new Loot('Cheer Suit', 'hp', 0), 5);
-  let enemyArray = [jock, avClub, cheer];
   constructor(player) {
     this.player = player;
     this.enemies = enemyArray[Math.floor(Math.random() * 3)];
