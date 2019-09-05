@@ -7,7 +7,7 @@ const sweatShirt = new Loot('Ratty Hipster Sweatshirt', 'hp', 0);
 const cheerSuit = new Loot('Cheer Suit', 'hp', 0);
 
 const jock = new Character('Chad Michael Michaelson', 1, 2, 2, fist, strap, 1);
-const avClub = new Character('AV Club', 1, 2, 2 reel, sweatShirt, 3);
+const avClub = new Character('AV Club', 1, 2, 2, reel, sweatShirt, 3);
 const cheer = new Character('Marsha', 1, 20, 1, gossip, cheerSuit, 5);
 const enemyArray = [jock, avClub, cheer];
 // export class Game {
@@ -41,9 +41,9 @@ export class Round {
           item = enemyLoot[i];
         }
       });
-      return "You Win!!!!"
+      return "win";
     } else {
-      return "You Lose"
+      return "lose";
     }
   }
 
@@ -66,41 +66,40 @@ export class Round {
       } else {
         player.hp = player.hp - totalAttack;
         this.turn = !(this.turn);
-        setTimeout(function() {
-          attack(player, enemy)
-        }, 2000);
+        return [player.hp, enemy.hp];
       }
 
     }
   }
+}
 
-  export class Character {
-    constructor(name, level, hp, attack, weapon, armor, brains) {
-      this.name = name;
-      this.level = level;
-      this.brains = brains;
-      this.hp = hp;
-      this.baseAttack = attack;
-      this.weapon = weapon;
-      this.armor = armor;
+export class Character {
+  constructor(name, level, hp, attack, weapon, armor, brains) {
+    this.name = name;
+    this.level = level;
+    this.brains = brains;
+    this.hp = hp;
+    this.baseAttack = attack;
+    this.weapon = weapon;
+    this.armor = armor;
 
-      this.player = false;
-    }
-
-    selectCharacter() {
-      this.player = true;
-    }
-
-    useStuff(loot) {
-      this[loot.type] += loot.stat;
-    }
-
+    this.player = false;
   }
 
-  export class Loot {
-    constructor(name, type, stat) {
-      this.name = name;
-      this.type = type;
-      this.stat = stat;
-    }
+  selectCharacter() {
+    this.player = true;
   }
+
+  useStuff(loot) {
+    this[loot.type] += loot.stat;
+  }
+}
+
+
+export class Loot {
+  constructor(name, type, stat) {
+    this.name = name;
+    this.type = type;
+    this.stat = stat;
+  }
+}
