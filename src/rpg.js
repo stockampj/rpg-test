@@ -78,11 +78,11 @@ export class Character {
     this.name = name;
     this.level = level;
     this.brains = brains;
+    this.hpMax =hp;
     this.hp = hp;
     this.baseAttack = attack;
     this.weapon = weapon;
     this.armor = armor;
-
     this.player = false;
   }
 
